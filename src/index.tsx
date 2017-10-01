@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route, Switch } from 'react-router';
 import configureStore from './store/configure';
 import { getTodos } from './Todo/Reducers/actions';
-import AddTodo from './Todo/Components/AddTodo';
+import VisibleTodoList from './Todo/Components/VisibleTodoList';
 
 const history = createBrowserHistory();
 const initialState = window.__INITIAL_STATE__ || {};
@@ -21,7 +21,7 @@ const renderApp = () => {
          <Provider store={store}>
             <ConnectedRouter history={history}>
                <Switch>
-                  <Route exact={true} path="/" component={AddTodo} />
+                  <Route exact={true} path="/" component={VisibleTodoList} />
                </Switch>
             </ConnectedRouter>
          </Provider>
@@ -34,8 +34,8 @@ store.dispatch(getTodos());
 renderApp();
 
 if (module.hot) {
-   module.hot.accept('./Todo/Components/AddTodo', () => {
-      const component = require<typeof AddTodo>('./Todo/Components/AddTodo');
+   module.hot.accept('./Todo/Components/VisibleTodoList', () => {
+      const component = require<typeof VisibleTodoList>('./Todo/Components/VisibleTodoList');
       renderApp();
    });
 }

@@ -3,12 +3,15 @@ export interface Todo {
    text: string;
    completed: boolean;
 }
-
-export type TodosListState = Todo [] ;
+export interface TodoState {
+   todos: Todo[];
+   filter: string;
+}
+export type TodosListState = TodoState;
 
 export const singleTodoInitialState = { id: '', text: '', completed: false } as Todo;
 
-export const todosListInitialState = []  as TodosListState;
+export const todosListInitialState = { todos: [] as Todo[], filter: '' } as TodosListState;
 
 export enum ActionType {
    GetTodos = 'todosApp/GET_TODOS',
