@@ -7,12 +7,11 @@ import { ConnectedRouter } from 'react-router-redux';
 import { Route, Switch } from 'react-router';
 import configureStore from './store/configure';
 import { getTodos } from './Todo/Reducers/actions';
-import VisibleTodoList from './Todo/Components/VisibleTodoList';
+import App from './Todo/Components/App';
 
 const history = createBrowserHistory();
 const initialState = window.__INITIAL_STATE__ || {};
 const store = configureStore(history, initialState);
-console.log(store.getState());
 const renderApp = () => {
    // This code starts up the React app when it runs in a browser. It sets up the routing configuration
    // and injects the app into a DOM element.
@@ -21,7 +20,7 @@ const renderApp = () => {
          <Provider store={store}>
             <ConnectedRouter history={history}>
                <Switch>
-                  <Route exact={true} path="/" component={VisibleTodoList} />
+                  <Route exact={true} path="/" component={App} />
                </Switch>
             </ConnectedRouter>
          </Provider>
@@ -34,8 +33,8 @@ store.dispatch(getTodos());
 renderApp();
 
 if (module.hot) {
-   module.hot.accept('./Todo/Components/VisibleTodoList', () => {
-      const component = require<typeof VisibleTodoList>('./Todo/Components/VisibleTodoList');
+   module.hot.accept('./Todo/Components/App', () => {
+      const component = require<typeof App>('./Todo/Components/App');
       renderApp();
    });
 }

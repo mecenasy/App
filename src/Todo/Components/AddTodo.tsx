@@ -18,7 +18,6 @@ class AddTodo extends React.Component<AddTodoProps, { todoText: string }> {
    }
 
    private handleSubmit = (e) => {
-      console.log(e.formMethod);
       e.preventDefault();
       this.props.onAddTodo(this.state.todoText);
       this.setState({ todoText: '' });
@@ -37,11 +36,11 @@ class AddTodo extends React.Component<AddTodoProps, { todoText: string }> {
    public render() {
       return (
          <div className={'col-lg-4 col-xs-12 col-sm-8 col-md-6 '}>
-            <form onSubmit={this.handleSubmit} >
+            <form onSubmit={this.handleSubmit} className={'form-inline'} >
                <FormGroup validationState={this.getValidationState()}  >
-                  <ControlLabel>dupa maryna</ControlLabel>
+                  <ControlLabel>Lista Todos`ów</ControlLabel>
                   <FormControl type="text" value={this.state.todoText} placeholder={'text'} autoFocus={true} onChange={this.handleChange} />
-                  <FormControl type="submit" formMethod="POST" value={'Dodaj'} disabled={this.state.todoText.length === 5} />
+                  <FormControl type="submit" value={'Dodaj'} disabled={this.state.todoText.length === 5} />
                </FormGroup>
             </form>
          </div>

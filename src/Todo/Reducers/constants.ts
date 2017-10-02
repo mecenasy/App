@@ -22,6 +22,9 @@ export enum ActionType {
    DelTodo = 'todosApp/DEL_TODO',
    DelTodoSuccess = 'todosApp/DEL_TODO_SUCCESS',
    DelTodoFail = 'todosApp/DEL_TODO_FAIL',
+   ToggleTodo = 'todosApp/TOGGLE_TODO',
+   ToggleTodoSuccess = 'todosApp/TOGGLE_TODO_SUCCESS',
+   ToggleTodoFail = 'todosApp/TOGGLE_TODO_FAIL',
 }
 
 export interface TodosAction {

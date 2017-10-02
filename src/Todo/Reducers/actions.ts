@@ -39,3 +39,17 @@ export const delTodoFail = (id: string): C.TodosAction => ({
    type: C.ActionType.DelTodoFail,
    id,
 });
+export const toggleTodo = (id: string): C.TodosAction => ({
+   type: C.ActionType.ToggleTodo,
+   id,
+});
+
+export const toggleTodoSuccess = (id: string): C.TodosAction => ({
+   type: C.ActionType.ToggleTodoSuccess,
+   id,
+});
+
+export const toggleTodoFail = (id: string): C.TodosAction => ({
+   type: C.ActionType.ToggleTodoFail,
+   id,
+});

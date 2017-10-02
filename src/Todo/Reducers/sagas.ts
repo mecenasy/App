@@ -8,7 +8,23 @@ export function* todosSaga() {
       fork(addTodo),
       fork(getTodos),
       fork(delTodo),
+      fork(toggleTodo),
    ];
+}
+
+function* toggleTodo() {
+   while (true) {
+      const action = yield take(C.ActionType.ToggleTodo);
+      const id = action.id;
+      try {
+         const request = yield call(api.getTodo, id);
+         const data = request.data;
+         yield call(api.toogleTodo, data);
+         yield put(A.toggleTodoSuccess(data.id));
+      } catch (err) {
+         yield put(A.toggleTodoFail(action.id));
+      }
+   }
 }
 
 function* addTodo() {

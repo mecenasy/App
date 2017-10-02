@@ -9,8 +9,9 @@ export const todosListReducer = (state = C.todosListInitialState, action: C.Todo
             todos: [...todos, singleTodoReducer(undefined, action) ],
             filter: '',
          };
+
          return newState;
-      };
+      }
       case C.ActionType.AddTodo:
       case C.ActionType.AddTodoFail:
       case C.ActionType.DelTodo:
@@ -23,9 +24,9 @@ export const todosListReducer = (state = C.todosListInitialState, action: C.Todo
          const newState = {
             todos: filterTodos,
             filter: '',
-         }
+         };
          return newState;
-      };
+      }
       default:
          return state;
    }
@@ -34,7 +35,7 @@ export const todosListReducer = (state = C.todosListInitialState, action: C.Todo
 export const singleTodoReducer = (state = C.singleTodoInitialState, action: C.TodosAction): C.Todo => {
    const { type, id, text, completed } = action;
    switch (type) {
-      case C.ActionType.AddTodo:
+      case C.ActionType.AddTodoSuccess:
          return {
             id,
             text,
