@@ -14,7 +14,7 @@ export const addTodo = (text: string): C.TodosAction => ({
    text,
 });
 
-export const addTodoSuccess = (id: string, text: string , completed: boolean): C.TodosAction => ({
+export const addTodoSuccess = (id: string, text: string, completed: boolean): C.TodosAction => ({
    type: C.ActionType.AddTodoSuccess,
    id,
    text,
@@ -44,9 +44,11 @@ export const toggleTodo = (id: string): C.TodosAction => ({
    id,
 });
 
-export const toggleTodoSuccess = (id: string): C.TodosAction => ({
+export const toggleTodoSuccess = (id: string, text: string, completed: boolean): C.TodosAction => ({
    type: C.ActionType.ToggleTodoSuccess,
    id,
+   text,
+   completed,
 });
 
 export const toggleTodoFail = (id: string): C.TodosAction => ({

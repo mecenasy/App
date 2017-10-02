@@ -7,7 +7,7 @@ import * as A from '../Reducers/actions';
 interface VisivleTodoListProps {
    todos: Todo[];
    filter: string;
-   // toggleTodo: (id: string) => any;
+   onToggleTodo: (id: string) => any;
    // fetchTodos: any;
    // isFetching: boolean;
    // errorMessage: string;
@@ -27,14 +27,16 @@ class VisibleTodoList extends React.Component<VisivleTodoListProps, {}> {
    public render() {
       return (
          <div >
-            <TodoList todos={this.props.todos} />
+            <TodoList todos={this.props.todos}  onTodoClick={this.props.onToggleTodo}/>
          </div>
       );
    }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+   onToggleTodo(id: string) { dispatch(A.toggleTodo(id)); },
+});
 const mapSteteToProps = (state, ownprops) => {
-   
    return {
       todos: state.todoApp.todos,
       filter: 'all',
@@ -42,4 +44,5 @@ const mapSteteToProps = (state, ownprops) => {
 };
 export default connect(
    mapSteteToProps,
+   mapDispatchToProps,
 )(VisibleTodoList);

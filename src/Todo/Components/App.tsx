@@ -1,15 +1,22 @@
 import * as React from 'react';
 import VisibleTodoList from './VisibleTodoList';
 import AddTodo from './AddTodo';
-
-export default  class App extends React.Component<{}, {}> {
+import { Grid, Row, Col } from 'react-bootstrap'
+export default class App extends React.Component<{}, {}> {
    public render() {
       return (
-         <div className={'container'}>
-            <AddTodo />
-            <VisibleTodoList />
+         <Grid className={'container'}>
+            <Row className={'showGrid'}>
+               <AddTodo />
+            </Row>
+            <Row className={'showGrid'}>
+               <p>fhdkfjhgkjdh</p>
+            </Row>
+            <Row className={'showGrid'}>
+               <VisibleTodoList />
+            </Row>
             {/* <Footer /> */}
-         </div>
+         </Grid>
       );
    }
 }

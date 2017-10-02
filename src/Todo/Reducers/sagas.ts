@@ -20,7 +20,7 @@ function* toggleTodo() {
          const request = yield call(api.getTodo, id);
          const data = request.data;
          yield call(api.toogleTodo, data);
-         yield put(A.toggleTodoSuccess(data.id));
+         yield put(A.toggleTodoSuccess(data.id, data.text, data.completed));
       } catch (err) {
          yield put(A.toggleTodoFail(action.id));
       }

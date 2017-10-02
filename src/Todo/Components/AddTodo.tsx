@@ -26,8 +26,6 @@ class AddTodo extends React.Component<AddTodoProps, { todoText: string }> {
       const lenght = this.state.todoText.length;
       if (lenght > 10) {
          return 'success';
-      } else if (lenght > 5) {
-         return 'warning';
       } else {
          return 'error';
       }
@@ -35,18 +33,17 @@ class AddTodo extends React.Component<AddTodoProps, { todoText: string }> {
 
    public render() {
       return (
-         <div className={'col-lg-4 col-xs-12 col-sm-8 col-md-6 '}>
-            <form onSubmit={this.handleSubmit} className={'form-inline'} >
-               <FormGroup validationState={this.getValidationState()}  >
-                  <ControlLabel>Lista Todos`ów</ControlLabel>
-                  <FormControl type="text" value={this.state.todoText} placeholder={'text'} autoFocus={true} onChange={this.handleChange} />
-                  <FormControl type="submit" value={'Dodaj'} disabled={this.state.todoText.length === 5} />
-               </FormGroup>
-            </form>
-         </div>
+         <form onSubmit={this.handleSubmit} className={'form-inline'} >
+            <FormGroup validationState={this.getValidationState()}  >
+               <ControlLabel>Lista Todos`ów</ControlLabel>
+               <FormControl type="text" value={this.state.todoText} placeholder={'text'} autoFocus={true} onChange={this.handleChange} />
+            </FormGroup>
+            <FormControl type="submit" value={'Dodaj'} disabled={this.state.todoText.length < 5} />
+         </form>
       );
    }
 }
+
 const mapDispatchToProps = (dispatch) => ({
    onAddTodo(name: string) { dispatch(A.addTodo(name)); },
 });
@@ -54,9 +51,9 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state: ApplicationState) => {
    return {
       todos: state.todoApp,
-   }
+   };
+};
 
-}
 export default connect(
    mapStateToProps,
    mapDispatchToProps,
