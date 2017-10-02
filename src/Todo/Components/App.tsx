@@ -1,7 +1,8 @@
 import * as React from 'react';
 import VisibleTodoList from './VisibleTodoList';
 import AddTodo from './AddTodo';
-import { Grid, Row, Col } from 'react-bootstrap'
+import ToggleBar from './ToggleBar';
+import { Grid, Row, Col } from 'react-bootstrap';
 export default class App extends React.Component<{}, {}> {
    public render() {
       return (
@@ -10,7 +11,7 @@ export default class App extends React.Component<{}, {}> {
                <AddTodo />
             </Row>
             <Row className={'showGrid'}>
-               <p>fhdkfjhgkjdh</p>
+               <ToggleBar/>
             </Row>
             <Row className={'showGrid'}>
                <VisibleTodoList />
