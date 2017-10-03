@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import TodoList from './TodoList';
 import { Todo, TodosListState } from '../Reducers/constants';
 import { todosListReducer } from '../Reducers/reducers';
@@ -18,7 +19,7 @@ class VisibleTodoList extends React.Component<VisivleTodoListProps, {}> {
       A.getTodos();
 
    }
-   public componentDidUpdate(prevProps: VisivleTodoListProps) {
+   public componentDidUpdate(prevProps: VisivleTodoListProps, prevState) {
       if (this.props.todos.length !== prevProps.todos.length) {
          A.getTodos();
 
@@ -27,7 +28,7 @@ class VisibleTodoList extends React.Component<VisivleTodoListProps, {}> {
    public render() {
       return (
          <div >
-            <TodoList todos={this.props.todos}  onTodoClick={this.props.onToggleTodo}/>
+            <TodoList todos={this.props.todos} onTodoClick={this.props.onToggleTodo} />
          </div>
       );
    }
@@ -36,13 +37,14 @@ class VisibleTodoList extends React.Component<VisivleTodoListProps, {}> {
 const mapDispatchToProps = (dispatch) => ({
    onToggleTodo(id: string) { dispatch(A.toggleTodo(id)); },
 });
-const mapSteteToProps = (state, ownprops) => {
+const mapSteteToProps = (state: any, ownprops: any) => {
+   console.log(ownprops);
    return {
       todos: state.todoApp.todos,
       filter: 'all',
    };
 };
-export default connect(
+export default withRouter(connect(
    mapSteteToProps,
    mapDispatchToProps,
-)(VisibleTodoList);
+)(VisibleTodoList));
