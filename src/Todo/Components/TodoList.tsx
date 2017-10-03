@@ -19,10 +19,10 @@ export default class TodoList extends React.Component<ITodoList, {}> {
             onClick: () => onTodoClick(todo.id),
             text: todo.text,
          };
-         return <TodoElement key={todo.id} {...props}/>;
+         return <li key={todo.id}><TodoElement key={todo.id} {...props}/></li>;
       });
       return (
-         <ul className="list-style-type:none">
+         <ul className="list-unstyled">
             {todosElement}
          </ul>
       );

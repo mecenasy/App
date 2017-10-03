@@ -16,7 +16,6 @@ export default class App extends React.Component<{}, {}> {
             <Row className={'showGrid'}>
                <VisibleTodoList />
             </Row>
-            {/* <Footer /> */}
          </Grid>
       );
    }

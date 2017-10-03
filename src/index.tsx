@@ -20,7 +20,7 @@ const renderApp = () => {
          <Provider store={store}>
             <ConnectedRouter history={history}>
                <Switch>
-                  <Route exact={true} path="/" component={App} />
+                  <Route exact={true} path="/:filter?" component={App} />
                </Switch>
             </ConnectedRouter>
          </Provider>

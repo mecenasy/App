@@ -1,37 +1,25 @@
 import * as React from 'react';
 import { ButtonToolbar, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-
+import FilterLink from './FilterLink';
 export default class ToggleBar extends React.Component<{}, {}> {
    public render() {
       return (
          <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
             <ToggleButton value={1}>
-               <NavLink
-                  exact={true}
-                  to={'/'}
-                  activeStyle={{ textDecoration: 'none', color: 'black' }}
-               >
+               <FilterLink filter={'all'}>
                   All
-               </NavLink>
+               </FilterLink>
             </ToggleButton>
             <ToggleButton value={2}>
-               <NavLink
-                  exact={true}
-                  to={'/completed'}
-                  activeStyle={{ textDecoration: 'none', color: 'black' }}
-               >
+               <FilterLink filter={'completed'}>
                   Completed
-               </NavLink>
+               </FilterLink>
             </ToggleButton>
             <ToggleButton value={3}>
-               <NavLink
-                  exact={true}
-                  to={'/active'}
-                  activeStyle={{ textDecoration: 'none', color: 'black' }}
-               >
+               <FilterLink filter={'active'}>
                   Active
-               </NavLink>
+               </FilterLink>
             </ToggleButton>
          </ToggleButtonGroup>
 

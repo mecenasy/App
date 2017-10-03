@@ -26,11 +26,9 @@ export default class TodoElement extends React.PureComponent<TodoElementProps, {
       } = this.props;
 
       return (
-
-         <li >
-            <Checkbox checked={this.state.checked} onClick={this.handleChecked} readOnly={true} >{text}</Checkbox>
-         </li >
-
+         <Checkbox checked={this.state.checked} onClick={this.handleChecked} readOnly={true} >
+            {text}
+         </Checkbox>
       );
    }
 }
