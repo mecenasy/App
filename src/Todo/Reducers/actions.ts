@@ -7,6 +7,14 @@ export const getTodos = (): C.TodosAction => ({
 export const getTodosFail = (): C.TodosAction => ({
    type: C.ActionType.GetTodosFail,
 });
+export const getTodosByFilter = (filter: string): C.TodosAction => ({
+   type: C.ActionType.GetTodosByFilter,
+   filter,
+});
+
+export const getTodosByFilterFail = (): C.TodosAction => ({
+   type: C.ActionType.GetTodosByFilterFail,
+});
 
 // incrementing and decrementing
 export const addTodo = (text: string): C.TodosAction => ({

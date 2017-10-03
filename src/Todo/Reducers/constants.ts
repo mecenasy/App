@@ -16,6 +16,8 @@ export const todosListInitialState = { todos: [] as Todo[], filter: '' } as Todo
 export enum ActionType {
    GetTodos = 'todosApp/GET_TODOS',
    GetTodosFail = 'todosApp/GET_TODOS_FAIL',
+   GetTodosByFilter = 'todosApp/GET_TODOS_BY_FILTER',
+   GetTodosByFilterFail = 'todosApp/GET_TODOS_BY_FILTER_FAIL',
    AddTodo = 'todosApp/ADD_TODO',
    AddTodoSuccess = 'todosApp/ADD_TODO_SUCCESS',
    AddTodoFail = 'todosApp/ADD_TODO_FAIL',
@@ -32,4 +34,5 @@ export interface TodosAction {
    id?: string;
    text?: string;
    completed?: boolean;
+   filter?: string;
 }

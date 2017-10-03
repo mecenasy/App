@@ -35,3 +35,7 @@ export function toogleTodo(todo: Todo) {
 export function getTodo(id: string) {
    return req.get(replaceId(paths.todo, id));
 }
+
+export function getTodosByFilter(filter: string) {
+   return req.get(paths.getTodosByFilter(filter));
+}

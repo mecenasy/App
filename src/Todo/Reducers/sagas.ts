@@ -7,6 +7,7 @@ export function* todosSaga() {
    yield [
       fork(addTodo),
       fork(getTodos),
+      fork(getTodosByFilter),
       fork(delTodo),
       fork(toggleTodo),
    ];
@@ -37,6 +38,22 @@ function* addTodo() {
          yield put(A.addTodoSuccess(data.id, data.text, data.completed));
       } catch (err) {
          yield put(A.addTodoFail());
+      }
+   }
+}
+
+function* getTodosByFilter() {
+   while (true) {
+      const action = yield take(A.getTodosByFilter);
+      const filter = action.filter;
+      try {
+         const request = yield call(api.getTodosByFilter, filter);
+         const data = request.data;
+         for (const todo of data) {
+            yield put(A.addTodoSuccess(todo.id, todo.text, todo.completed));
+         }
+      } catch (err) {
+         yield put(A.getTodosByFilterFail());
       }
    }
 }
