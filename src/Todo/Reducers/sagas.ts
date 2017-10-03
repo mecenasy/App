@@ -44,7 +44,7 @@ function* addTodo() {
 
 function* getTodosByFilter() {
    while (true) {
-      const action = yield take(A.getTodosByFilter);
+      const action = yield take(C.ActionType.GetTodosByFilter);
       const filter = action.filter;
       try {
          const request = yield call(api.getTodosByFilter, filter);
